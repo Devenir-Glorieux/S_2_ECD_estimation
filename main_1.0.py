@@ -2,6 +2,7 @@ from tkinter import *
 from tkinter import ttk
 import csv
 from tkinter.scrolledtext import ScrolledText
+from tkinter import messagebox
 import math
 import os
 
@@ -503,6 +504,36 @@ table.heading("Drilling Interval", text='Drilling Interval', anchor=CENTER)
 table.heading("ECD_shoe", text="ECD_shoe", anchor=CENTER)
 table.heading("ECD_bottom", text="ECD_bottom", anchor=CENTER)
 table.heading("dP_annular", text="dP_annular", anchor=CENTER)
+
+#------------------------------------------------------------------------------
+def calculator():
+    os.system("C:/WINDOWS/System32/calc.exe")
+    return
+def show_about():
+    messagebox.showinfo(title="About", message="Version: 1.0\nAuthor: Stanislav Nikulin\nTelegram: @stan_nikulin\nDate: 2023\nLicense: MIT")
+#меню
+menu_bar = Menu(window)
+
+file_menu = Menu(menu_bar, tearoff=0)
+# file_menu.add_command(label="Сохранить", command=save_file)
+# file_menu.add_separator()
+file_menu.add_command(label="Exit", command=window.quit)
+menu_bar.add_cascade(label="File", menu=file_menu)
+
+edit_menu = Menu(menu_bar, tearoff=0)
+# edit_menu.add_command(label="Копировать")
+edit_menu.add_command(label="Calculator", command=calculator)
+
+menu_bar.add_cascade(label="Options", menu=edit_menu)
+
+help_menu = Menu(menu_bar, tearoff=0)
+help_menu.add_command(label="About...", command=show_about)
+menu_bar.add_cascade(label="Help", menu=help_menu)
+
+window.config(menu=menu_bar)
+
+
+#------------------------------------------------------------------------------
 
 window.mainloop()
 
